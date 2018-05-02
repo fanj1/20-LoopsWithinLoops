@@ -3,15 +3,15 @@ This project demonstrates NESTED LOOPS (i.e., loops within loops)
 in the context of TWO-DIMENSIONAL GRAPHICS.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Jun Fan.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
 
 def main():
     """ Calls the other functions to demonstrate them. """
-    run_test_draw_L()
+    # run_test_draw_L()
     run_test_draw_wall_on_right()
 
 
@@ -79,8 +79,27 @@ def draw_L(window, circle, r, c):
       :type c: int
     and m and n are small, positive integers.
     """
+
+    rad = circle.radius
+    p = circle.center
+    col =circle.fill_color
+    for k in range(r):
+        for j in range(3):
+            circle1 = rg.Circle(rg.Point(p.x + j * 2 * rad, p.y), rad)
+            circle1.fill_color = col
+            circle1.attach_to(window)
+            window.render(0.1)
+        p.y = p.y + 2 * rad
+    for k in range(c):
+        for j in range(3):
+            circle1 = rg.Circle(rg.Point(p.x, p.y + j * 2 * rad), rad)
+            circle1.fill_color = col
+            circle1.attach_to(window)
+            window.render(0.1)
+        p.x = p.x + 2 * rad
+
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
 
@@ -120,8 +139,25 @@ def draw_wall_on_right(rectangle, n, window):
       :type window: rg.RoseWindow
     and n is a small, positive integer.
     """
+
+    p1 = rectangle.get_upper_right_corner()
+    p2 = rectangle.get_lower_left_corner()
+    width = p1.x - p2.x
+    height = p2.y - p1.y
+    for k in range(n):
+        p3 = p1.clone()
+        p4 = p2.clone()
+        for j in range(k + 1):
+            reg = rg.Rectangle(p3, p4)
+            reg.attach_to(window)
+            window.render(0.1)
+            p3.x = p3.x - width
+            p4.x = p4.x - width
+        p1.y = p1.y + height
+        p2.y = p2.y + height
+
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
 
