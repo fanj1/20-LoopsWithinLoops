@@ -160,6 +160,9 @@ def run_test_sum_numbers():
     print('Expected and actual are:', expected, answer)
 
     # TO DO 3 (continued): Add your ADDITIONAL test(s) here:
+    expected = 8
+    answer = sum_numbers(([1, 2], [5], []))
+    print('Expected and actual are:', expected, answer)
 
 
 def sum_numbers(seq_seq):
@@ -172,8 +175,14 @@ def sum_numbers(seq_seq):
     Preconditions:  the given argument is a sequences of sequences,
                     and each item in the subsequences is a number.
     """
+    ans = 0
+    for k in range(len(seq_seq)):
+        for j in range(len(seq_seq[k])):
+            ans = ans + seq_seq[k][j]
+    return ans
+
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
 
@@ -223,8 +232,13 @@ def print_characters(sequence_of_strings):
        !
     Precondition:  the given argument is a sequence of strings.
     """
+
+    for k in range(len(sequence_of_strings)):
+        for j in range(len(sequence_of_strings[k])):
+            print(sequence_of_strings[k][j])
+
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #  ** READ THE TESTS that have been written for you (ABOVE).
     #  ** ASK QUESTIONS if you do not understand the TESTS (ABOVE).
     # ------------------------------------------------------------------
@@ -276,8 +290,15 @@ def print_characters_slanted(sequence_of_strings):
             !
     Precondition:  the given argument is a sequence of strings.
     """
+
+    for k in range(len(sequence_of_strings)):
+        for j in range(len(sequence_of_strings[k])):
+            for i in range(j):
+                print(' ', end='')
+            print(sequence_of_strings[k][j])
+
     # ------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # DONE: 6. Implement and test this function.
     #  ** READ THE TESTS that have been written for you (ABOVE).
     #  ** ASK QUESTIONS if you do not understand the TESTS (ABOVE).
     #
